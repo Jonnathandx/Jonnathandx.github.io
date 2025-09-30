@@ -1,75 +1,376 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portafolio - Jonnathan Nieves</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Portafolio — Jonnathan Nieves</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Tailwind via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Simple icons (SVG sprite) -->
+  <style>
+    :root { --accent:#4f46e5; --muted:#6b7280; }
+    body { font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; }
+    .accent { color: var(--accent); }
+    .accent-bg { background: linear-gradient(90deg, #4f46e5 0%, #06b6d4 100%); }
+    .glass { background: rgba(255,255,255,0.6); backdrop-filter: blur(6px); }
+    [data-theme="dark"] { --bg: #0b1220; --card:#071226; --text:#cbd5e1; --muted:#94a3b8; }
+    [data-theme="light"] { --bg: #f8fafc; --card:#ffffff; --text:#0f172a; --muted:#6b7280; }
+    body { background: radial-gradient(1200px 400px at 10% 10%, rgba(79,70,229,0.06), transparent), var(--bg, #f8fafc); color:var(--text, #0f172a); }
+  </style>
+
+  <!-- Meta for social preview -->
+  <meta name="description" content="Portafolio de Jonnathan Nieves — Desarrollador Junior (Android/Kotlin & Python backend). Proyectos: SHAYA, dashboards Grafana, scripts Python, más." />
 </head>
-<body class="bg-gray-100 font-sans text-gray-800">
-  <header class="bg-indigo-600 text-white p-6 shadow-md">
-    <h1 class="text-3xl font-bold">Jonnathan Nieves</h1>
-    <p class="text-lg">Desarrollador Junior | Backend en Python & Aplicaciones Móviles</p>
+<body data-theme="light" class="min-h-screen antialiased">
+
+  <!-- Navbar -->
+  <header class="sticky top-0 z-50">
+    <div class="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
+      <div class="flex items-center gap-4">
+        <div class="w-12 h-12 rounded-lg accent-bg flex items-center justify-center text-white font-extrabold shadow-md">JN</div>
+        <div>
+          <h1 class="text-lg font-bold">Jonnathan Nieves</h1>
+          <p class="text-sm text-muted" style="color:var(--muted)">Desarrollador Junior — Android (Kotlin) • Python Backend • Integración API</p>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-4">
+        <button id="themeToggle" class="px-3 py-2 rounded-md ring-1 ring-slate-200/40 hover:scale-105 transition">🌙</button>
+        <a href="#" id="downloadCv" class="hidden sm:inline-block px-4 py-2 rounded-md bg-indigo-600 text-white hover:opacity-90 transition">Descargar CV</a>
+        <a href="mailto:jonnathan.nievesn@gmail.com" class="inline-flex items-center gap-2 px-4 py-2 rounded-md border border-slate-200/40 hover:bg-slate-50 transition">Contactar</a>
+      </div>
+    </div>
   </header>
 
-  <main class="max-w-4xl mx-auto p-6">
-    <section class="mb-10">
-      <h2 class="text-2xl font-semibold border-b-2 border-indigo-600 mb-4">Sobre mí</h2>
-      <p>
-        Soy Ingeniero en Telecomunicaciones con experiencia en desarrollo de aplicaciones móviles 
-        (Android Studio - Kotlin) y backend en Python. He trabajado en integración de APIs REST, 
-        bases de datos SQL/NoSQL y dashboards con Grafana. Me apasiona el desarrollo de soluciones 
-        tecnológicas enfocadas en eficiencia y usabilidad.
-      </p>
+  <!-- Hero -->
+  <main class="max-w-5xl mx-auto px-6 py-12">
+    <section class="grid md:grid-cols-3 gap-8 items-start">
+      <div class="md:col-span-2">
+        <div class="p-6 rounded-2xl shadow-lg" style="background:linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.35));">
+          <h2 class="text-3xl font-extrabold mb-2">Hola, soy <span class="accent">Jonnathan</span></h2>
+          <p class="text-muted mb-4" style="color:var(--muted)">
+            Ingeniero en Telecomunicaciones con experiencia en desarrollo de aplicaciones móviles (Android/Kotlin) y backend en Python.
+            Me especializo en integración de APIs REST, visualización de datos y soluciones orientadas a ERP/CRM.
+          </p>
+
+          <div class="flex flex-wrap gap-3">
+            <a class="inline-flex items-center gap-2 px-4 py-2 bg-white rounded-md shadow-sm hover:shadow-md transition" href="https://github.com/Jonnathandx" target="_blank">GitHub</a>
+            <a class="inline-flex items-center gap-2 px-4 py-2 bg-white rounded-md shadow-sm hover:shadow-md transition" href="https://linkedin.com/in/jonnathan-nieves-nambel-05011820b" target="_blank">LinkedIn</a>
+            <button id="openProjects" class="inline-flex items-center gap-2 px-4 py-2 bg-indigo-600 text-white rounded-md shadow-sm hover:opacity-95 transition">Ver proyectos</button>
+          </div>
+        </div>
+
+        <!-- Highlights -->
+        <div class="mt-6 grid sm:grid-cols-3 gap-4">
+          <div class="p-4 rounded-xl shadow glass">
+            <h3 class="text-sm font-semibold">📱 Móvil</h3>
+            <p class="text-xs mt-2" style="color:var(--muted)">Android Studio (Kotlin), diseño de UI y consumo de APIs.</p>
+          </div>
+          <div class="p-4 rounded-xl shadow glass">
+            <h3 class="text-sm font-semibold">🧰 Backend</h3>
+            <p class="text-xs mt-2" style="color:var(--muted)">Python, APIs REST, integración, automatización.</p>
+          </div>
+          <div class="p-4 rounded-xl shadow glass">
+            <h3 class="text-sm font-semibold">📊 Datos</h3>
+            <p class="text-xs mt-2" style="color:var(--muted)">Grafana, monitoreo, visualización de métricas.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact / Quick info -->
+      <aside class="p-6 rounded-2xl shadow-lg" style="background:var(--card,#fff)">
+        <div class="flex flex-col gap-3">
+          <div>
+            <p class="text-sm text-muted" style="color:var(--muted)">Ubicación</p>
+            <p class="font-semibold">Cuenca, Ecuador</p>
+          </div>
+          <div>
+            <p class="text-sm text-muted" style="color:var(--muted)">Email</p>
+            <a href="mailto:jonnathan.nievesn@gmail.com" class="font-semibold">jonnathan.nievesn@gmail.com</a>
+          </div>
+          <div>
+            <p class="text-sm text-muted" style="color:var(--muted)">Stack</p>
+            <p class="text-sm">Kotlin • Python • JavaScript • SQL • Git</p>
+          </div>
+
+          <div class="mt-4 flex gap-2">
+            <a class="flex-1 text-center py-2 rounded-md border" href="#" id="btnPortfolioRepo">Ver repos</a>
+            <a class="flex-1 text-center py-2 rounded-md bg-indigo-600 text-white" href="#" id="btnPortfolioWeb">Live</a>
+          </div>
+        </div>
+      </aside>
     </section>
 
-    <section class="mb-10">
-      <h2 class="text-2xl font-semibold border-b-2 border-indigo-600 mb-4">Proyectos</h2>
-      <div class="grid md:grid-cols-2 gap-6">
+    <!-- Projects (section target) -->
+    <section id="projects" class="mt-12">
+      <div class="flex items-center justify-between mb-6">
+        <h2 class="text-2xl font-bold">Proyectos destacados</h2>
 
-        <!-- Proyecto SHAYA -->
-        <div class="bg-white p-4 rounded-lg shadow hover:shadow-lg">
-          <h3 class="text-xl font-bold">SHAYA - App Android</h3>
-          <p class="mt-2">Aplicación móvil desarrollada en Android Studio (Kotlin) para la Universidad de Cuenca. 
-          Incluye gestión de usuarios e integración de API REST.</p>
-          <a href="https://github.com/Jonnathandx/shaya" class="text-indigo-600 font-medium">Ver en GitHub</a>
+        <!-- Filters -->
+        <div class="flex gap-2">
+          <button class="filter-btn px-3 py-2 rounded-md ring-1" data-filter="all">Todos</button>
+          <button class="filter-btn px-3 py-2 rounded-md ring-1" data-filter="mobile">Móvil</button>
+          <button class="filter-btn px-3 py-2 rounded-md ring-1" data-filter="backend">Backend</button>
+          <button class="filter-btn px-3 py-2 rounded-md ring-1" data-filter="infra">Infra / Dash</button>
         </div>
+      </div>
 
-        <!-- Proyecto Grafana -->
-        <div class="bg-white p-4 rounded-lg shadow hover:shadow-lg">
-          <h3 class="text-xl font-bold">Dashboards en Grafana</h3>
-          <p class="mt-2">Diseño de paneles para monitoreo y administración de sistemas, integrados con 
-          bases de datos y métricas en tiempo real.</p>
-        </div>
+      <div id="grid" class="grid md:grid-cols-2 gap-6">
+        <!-- Card: SHAYA -->
+        <article class="proj card" data-tags="mobile backend" data-title="SHAYA - App Android">
+          <div class="p-6 rounded-xl shadow-lg" style="background:var(--card,#fff)">
+            <div class="flex justify-between items-start gap-4">
+              <h3 class="text-xl font-semibold">SHAYA — App Android</h3>
+              <span class="text-sm text-muted" style="color:var(--muted)">Kotlin • Android Studio</span>
+            </div>
+            <p class="mt-3 text-sm" style="color:var(--muted)">
+              Participación activa en el desarrollo de la app móvil para la Universidad de Cuenca. Gestión de usuarios, integración de API REST y pruebas de usabilidad.
+            </p>
+            <div class="mt-4 flex items-center gap-3">
+              <a href="https://github.com/Jonnathandx/shaya" target="_blank" class="px-3 py-2 rounded-md ring-1">Código</a>
+              <button class="px-3 py-2 rounded-md bg-indigo-600 text-white" data-open="SHAYA">Ver detalles</button>
+            </div>
+          </div>
+        </article>
 
-        <!-- Proyecto Bacularis -->
-        <div class="bg-white p-4 rounded-lg shadow hover:shadow-lg">
-          <h3 class="text-xl font-bold">Gestión de Respaldos - Bacularis</h3>
-          <p class="mt-2">Configuración e integración de interfaz web para la gestión de copias de seguridad 
-          bajo esquemas 3-2-1.</p>
-        </div>
+        <!-- Card: Grafana -->
+        <article class="proj card" data-tags="infra" data-title="Dashboards Grafana">
+          <div class="p-6 rounded-xl shadow-lg" style="background:var(--card,#fff)">
+            <div class="flex justify-between items-start gap-4">
+              <h3 class="text-xl font-semibold">Dashboards — Grafana</h3>
+              <span class="text-sm text-muted" style="color:var(--muted)">Grafana • Prometheus</span>
+            </div>
+            <p class="mt-3 text-sm" style="color:var(--muted)">
+              Diseño y personalización de paneles para monitoreo en tiempo real, integración con bases de datos y alertas.
+            </p>
+            <div class="mt-4 flex items-center gap-3">
+              <a href="#" class="px-3 py-2 rounded-md ring-1">Docs</a>
+              <button class="px-3 py-2 rounded-md bg-indigo-600 text-white" data-open="Grafana">Ver detalles</button>
+            </div>
+          </div>
+        </article>
 
-        <!-- Proyecto Scripts Python -->
-        <div class="bg-white p-4 rounded-lg shadow hover:shadow-lg">
-          <h3 class="text-xl font-bold">Automatización con Python</h3>
-          <p class="mt-2">Desarrollo de scripts en Python para automatizar generación de reportes técnicos 
-          y procesos en entornos Linux.</p>
-          <a href="https://github.com/Jonnathandx" class="text-indigo-600 font-medium">Ver repositorios</a>
-        </div>
+        <!-- Card: Bacularis -->
+        <article class="proj card" data-tags="infra backend" data-title="Bacularis - Respaldos">
+          <div class="p-6 rounded-xl shadow-lg" style="background:var(--card,#fff)">
+            <div class="flex justify-between items-start gap-4">
+              <h3 class="text-xl font-semibold">Bacularis — Gestión de Respaldos</h3>
+              <span class="text-sm text-muted" style="color:var(--muted)">Backups • 3-2-1</span>
+            </div>
+            <p class="mt-3 text-sm" style="color:var(--muted)">
+              Implementación de interfaces y procedimientos de respaldo automáticos, junto con documentación técnica para recuperación.
+            </p>
+            <div class="mt-4 flex items-center gap-3">
+              <a href="#" class="px-3 py-2 rounded-md ring-1">Docs</a>
+              <button class="px-3 py-2 rounded-md bg-indigo-600 text-white" data-open="Bacularis">Ver detalles</button>
+            </div>
+          </div>
+        </article>
 
+        <!-- Card: Python scripts -->
+        <article class="proj card" data-tags="backend" data-title="Automatización con Python">
+          <div class="p-6 rounded-xl shadow-lg" style="background:var(--card,#fff)">
+            <div class="flex justify-between items-start gap-4">
+              <h3 class="text-xl font-semibold">Automatización — Python</h3>
+              <span class="text-sm text-muted" style="color:var(--muted)">Python • Bash</span>
+            </div>
+            <p class="mt-3 text-sm" style="color:var(--muted)">
+              Scripts para automatizar generación de reportes técnicos, mantenimiento y procesos en servidores Linux.
+            </p>
+            <div class="mt-4 flex items-center gap-3">
+              <a href="https://github.com/Jonnathandx" target="_blank" class="px-3 py-2 rounded-md ring-1">Ver repos</a>
+              <button class="px-3 py-2 rounded-md bg-indigo-600 text-white" data-open="Python">Ver detalles</button>
+            </div>
+          </div>
+        </article>
       </div>
     </section>
 
-    <section>
-      <h2 class="text-2xl font-semibold border-b-2 border-indigo-600 mb-4">Contacto</h2>
-      <p>📧 jonnathan.nievesn@gmail.com</p>
-      <p>🔗 <a href="https://linkedin.com/in/jonnathan-nieves-nambel-05011820b" class="text-indigo-600">LinkedIn</a></p>
-      <p>💻 <a href="https://github.com/Jonnathandx" class="text-indigo-600">GitHub</a></p>
+    <!-- About / Experience -->
+    <section class="mt-12 p-6 rounded-2xl shadow-lg" style="background:var(--card,#fff)">
+      <h2 class="text-2xl font-bold mb-4">Experiencia & Educación</h2>
+
+      <div class="grid md:grid-cols-2 gap-6">
+        <div>
+          <h3 class="font-semibold">Técnico de soporte — Tech Resources</h3>
+          <p class="text-sm" style="color:var(--muted)">Sept 2024 — Nov 2024 — Cuenca</p>
+          <ul class="list-disc pl-5 mt-2 text-sm" style="color:var(--muted)">
+            <li>Automatización con Python para informes.</li>
+            <li>Integración de dispositivos IoT con AWS.</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-semibold">Técnico de soporte — Mgtr. Fausto Arpi</h3>
+          <p class="text-sm" style="color:var(--muted)">Mar 2021 — Feb 2023 — Paute</p>
+          <ul class="list-disc pl-5 mt-2 text-sm" style="color:var(--muted)">
+            <li>Administración de servidores on-prem y en AWS.</li>
+            <li>Diseño de arquitecturas de red y seguridad.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="mt-6">
+        <h3 class="font-semibold">Educación</h3>
+        <p class="text-sm" style="color:var(--muted)">Ingeniería en Telecomunicaciones — Universidad de Cuenca (2025)</p>
+      </div>
     </section>
+
+    <!-- Footer / Contact -->
+    <footer class="mt-12 mb-8 text-center text-sm text-muted" style="color:var(--muted)">
+      <p>© 2025 — Jonnathan Nieves • <a href="mailto:jonnathan.nievesn@gmail.com">jonnathan.nievesn@gmail.com</a></p>
+    </footer>
   </main>
 
-  <footer class="bg-gray-200 text-center p-4 mt-10">
-    <p>© 2025 - Jonnathan Nieves</p>
-  </footer>
+  <!-- Modal template -->
+  <div id="modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/50 p-4">
+    <div class="max-w-3xl w-full bg-white rounded-xl overflow-hidden shadow-lg" id="modalCard" role="dialog" aria-modal="true">
+      <div class="p-6">
+        <div class="flex justify-between items-start">
+          <div>
+            <h3 id="modalTitle" class="text-xl font-bold">Título</h3>
+            <p id="modalTech" class="text-sm" style="color:var(--muted)">Tecnologías</p>
+          </div>
+          <button id="closeModal" class="text-muted">✕</button>
+        </div>
+
+        <div id="modalBody" class="mt-4 text-sm" style="color:var(--muted)">
+          Descripción del proyecto...
+        </div>
+
+        <div class="mt-6 flex gap-3">
+          <a id="modalRepo" href="#" target="_blank" class="px-4 py-2 rounded-md ring-1">Ver repositorio</a>
+          <a id="modalDemo" href="#" target="_blank" class="px-4 py-2 rounded-md bg-indigo-600 text-white">Ver demo</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    // Theme toggle
+    const themeBtn = document.getElementById('themeToggle');
+    const root = document.body;
+    const isDark = localStorage.getItem('theme') === 'dark';
+    if (isDark) root.setAttribute('data-theme','dark'), themeBtn.textContent = '☀️';
+
+    themeBtn.addEventListener('click', () => {
+      const cur = root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+      const next = cur === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+      themeBtn.textContent = next === 'dark' ? '☀️' : '🌙';
+    });
+
+    // Filter projects
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const projectCards = document.querySelectorAll('.proj');
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b=>b.classList.remove('bg-indigo-50'));
+        btn.classList.add('bg-indigo-50');
+        const f = btn.dataset.filter;
+        projectCards.forEach(card => {
+          if(f === 'all') card.style.display = '';
+          else {
+            const tags = card.dataset.tags.split(' ');
+            card.style.display = tags.includes(f) ? '' : 'none';
+          }
+        });
+        // smooth scroll to projects
+        document.getElementById('projects').scrollIntoView({behavior:'smooth', block:'start'});
+      });
+    });
+    // default select 'all'
+    document.querySelector('.filter-btn[data-filter="all"]').classList.add('bg-indigo-50');
+
+    // Modal logic
+    const modal = document.getElementById('modal');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalTech = document.getElementById('modalTech');
+    const modalBody = document.getElementById('modalBody');
+    const modalRepo = document.getElementById('modalRepo');
+    const modalDemo = document.getElementById('modalDemo');
+    const closeModal = document.getElementById('closeModal');
+
+    document.querySelectorAll('[data-open]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const key = btn.dataset.open;
+        // Demo content mapping (customize)
+        const db = {
+          SHAYA: {
+            title: 'SHAYA — App Android',
+            tech: 'Kotlin • Android Studio • REST API',
+            desc: 'Desarrollo de la aplicación móvil SHAYA para la Universidad de Cuenca. Implementé gestión de sesiones, consumo de APIs y validaciones. Participé en pruebas de campo y mejoras de usabilidad.',
+            repo: 'https://github.com/Jonnathandx/shaya',
+            demo: '#'
+          },
+          Grafana: {
+            title: 'Dashboards — Grafana',
+            tech: 'Grafana • Prometheus • SQL',
+            desc: 'Diseño y configuración de paneles para monitoreo, gestión de alertas y visualización de métricas en tiempo real para infraestructura académica.',
+            repo: '#',
+            demo: '#'
+          },
+          Bacularis: {
+            title: 'Bacularis — Gestión de Respaldos',
+            tech: 'Bacula • Shell • Automatización',
+            desc: 'Integración de interfaz web y automatización de procesos de respaldo en esquema 3-2-1, creación de procedimientos de recuperación y documentación técnica.',
+            repo: '#',
+            demo: '#'
+          },
+          Python: {
+            title: 'Automatización — Python',
+            tech: 'Python • Bash • Linux',
+            desc: 'Scripts para generación automática de reportes técnicos, análisis de logs y tareas de mantenimiento en servidores Linux.',
+            repo: 'https://github.com/Jonnathandx',
+            demo: '#'
+          }
+        };
+
+        const item = db[key];
+        if (!item) return;
+        modalTitle.textContent = item.title;
+        modalTech.textContent = item.tech;
+        modalBody.textContent = item.desc;
+        modalRepo.href = item.repo;
+        modalDemo.href = item.demo;
+        modal.classList.remove('hidden');
+        document.documentElement.style.overflow = 'hidden';
+      });
+    });
+
+    closeModal.addEventListener('click', ()=> {
+      modal.classList.add('hidden');
+      document.documentElement.style.overflow = '';
+    });
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.classList.add('hidden');
+        document.documentElement.style.overflow = '';
+      }
+    });
+
+    // Quick buttons
+    document.getElementById('openProjects').addEventListener('click', ()=> {
+      document.getElementById('projects').scrollIntoView({behavior:'smooth', block:'start'});
+    });
+    document.getElementById('btnPortfolioRepo').addEventListener('click', ()=> {
+      window.open('https://github.com/Jonnathandx', '_blank');
+    });
+    document.getElementById('btnPortfolioWeb').addEventListener('click', ()=> {
+      // if you deploy to /portfolio, change this to your URL
+      window.open(window.location.href, '_blank');
+    });
+
+    // Hook CV download (you should upload your PDF to the repo and point here)
+    const cvLink = document.getElementById('downloadCv');
+    cvLink.href = 'Jonnathan_Nieves_CV.pdf'; // <-- sube tu PDF con este nombre al repo
+    cvLink.classList.remove('hidden');
+  </script>
 </body>
 </html>
